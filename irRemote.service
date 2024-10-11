@@ -1,0 +1,16 @@
+[Unit]
+Description=IR Remote Service
+After=network.target
+
+
+[Service]
+User=root
+
+Type=exec
+ExecStart= sudo /home/allanbeth/Environments/IR-Remote/bin/python3.12 /home/allanbeth/Apps/IR-Remote/launchremote.py
+Environment=PYTHONUNBUFFERED=1
+Restart=always
+RestartSec=60s
+
+[Install]
+WantedBy=multi-user.target

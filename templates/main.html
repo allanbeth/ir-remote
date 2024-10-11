@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<head>
+
+  <title>IR Remote</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+    integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+    integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+    crossorigin="anonymous"></script>
+
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+
+    div.container {
+      position: relative;
+      text-align: center;
+      width: 380px;
+      background-color: darkgray;
+      padding-top: 50px;
+      padding-bottom: 90px;
+    }
+
+    table {
+      table-layout: fixed;
+      align-self: center;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 30px;
+    }
+
+
+    td {
+      padding: 5px;
+
+    }
+
+    form {
+
+      height: 100%;
+    }
+
+
+
+    .deviceText {
+      font-size: 40px;
+      text-align: center;
+      background-color: darkgrey;
+    }
+
+    tr.section {
+      height: 30px;
+    }
+
+    button#text {
+      font-size: 24px;
+    }
+    .header{
+      font-size: 26px;
+    }
+
+    h1.centered {
+      width: 100%;
+      text-align: center;
+    }
+
+    i {
+      font-size: 5rem;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <h1 class="centered">IR-Remote Web Server</h1>
+  <hr>
+
+  <div class="container" style="text-align: center;">
+    <form action="/" name="remote" method="post">
+
+      <table class="header" style="padding-top: 150px;">
+        <tr>
+          <td class="deviceText" colspan="2">{{make}}</td>
+          <td><button class="btn btn-danger" type="submit" name="button" id="function" value="Power"><i
+                class="bi bi-power"></i></button></td>
+        </tr>
+      </table>
+
+      <table class="numbers">
+        <tr>
+          <td><button class="btn btn-default" type="submit" name="button" id="number" value="1"><i
+                class="bi bi-1-circle"></i></button>
+          </td>
+          <td><button class="btn btn-default" type="submit" name="button" id="number" value="2"><i
+                class="bi-2-circle"></i></button>
+          </td>
+          <td><button class="btn btn-default" type="submit" name="button" id="number" value="3"><i
+                class="bi-3-circle"></i></button>
+          </td>
+        </tr>
+        <tr>
+          <td><button class="btn btn-default" type="submit" name="button" id="number" value="4"><i
+                class="bi-4-circle"></i></button>
+          </td>
+          <td><button class="btn btn-default" type="submit" name="button" id="number" value="5"><i
+                class="bi-5-circle"></i></button>
+          </td>
+          <td><button class="btn btn-default" type="submit" name="button" id="number" value="6"><i
+                class="bi-6-circle"></i></button>
+          </td>
+        </tr>
+        <tr>
+          <td><button class="btn btn-default" type="submit" name="button" id="number" value="7"><i
+                class="bi-7-circle"></i></button>
+          </td>
+          <td><button class="btn btn-default" type="submit" name="button" id="number" value="8"><i
+                class="bi-8-circle"></i></button>
+          </td>
+          <td><button class="btn btn-default" type="submit" name="button" id="number" value="9"><i
+                class="bi-9-circle"></i></button>
+          </td>
+        </tr>
+        <tr>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="FAV"><i
+                class="bi bi-star"></i></button>
+          </td>
+          <td><button class="btn btn-default" type="submit" name="button" id="number" value="0"><i
+                class="bi-0-circle"></i></button>
+          </td>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="AV"><i
+                class="bi bi-box-arrow-right"></i></button>
+          </td>
+        </tr>
+      </table>
+
+      <table class="text">
+        <tr>
+          <td><button class="btn btn-default" type="submit" name="button" id="text" value="Guide">GUIDE</button></td>
+          <td><button class="btn btn-default" type="submit" name="button" id="text" value="Smart">SMART</button></td>
+          <td><button class="btn btn-default" type="submit" name="button" id="text" value="Info">INFO</button></td>
+        </tr>
+      </table>
+
+      <table class="nav">
+        <tr>
+          <td></td>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Up"><i
+                class="bi bi-arrow-up-circle"></i></button>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Left"><i
+                class="bi bi-arrow-left-circle"></i></button>
+          </td>
+          <td><button class="btn btn-default" type="submit" name="button" id="text" value="OK">OK</button>
+          </td>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Right"><i
+                class="bi bi-arrow-right-circle"></i></button>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Down"><i
+                class="bi bi-arrow-down-circle"></i></button>
+          </td>
+          <td></td>
+        </tr>
+      </table>
+
+      <table class="text">
+        <tr>
+          <td><button class="btn btn-default" type="submit" name="button" id="text" value="Back">BACK</button></td>
+          <td><button class="btn btn-default" type="submit" name="button" id="text" value="Menu">MENU</button></td>
+          <td><button class="btn btn-default" type="submit" name="button" id="text" value="Exit">EXIT</button></td>
+        </tr>
+      </table>
+
+      <table class="scroll">
+        <tr>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Vol +"><i
+                class="bi bi-volume-up"></i></button></td>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Mute"><i
+                class="bi bi-volume-mute"></i></button></td>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Ch +"><i
+                class="bi bi-plus-circle"></i></button></td>
+        </tr>
+        <tr>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Vol -"><i
+                class="bi bi-volume-down"></button></td>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Return"><i
+                class="bi bi-arrow-clockwise"></button></td>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Ch -"><i
+                class="bi bi-dash-circle"></i></button></td>
+        </tr>
+      </table>
+
+      <table class="colours">
+        <tr>
+          <td><button class="btn btn-danger btn-lg" type="submit" name="button" id="function" value="Red"></button></td>
+          <td><button class="btn btn-success btn-lg" type="submit" name="button" id="function" value="Green"></button>
+          </td>
+          <td><button class="btn btn-warning btn-lg" type="submit" name="button" id="function" value="Yellow"></button>
+          </td>
+          <td><button class="btn btn-primary btn-lg" type="submit" name="button" id="function" value="Blue"></button>
+          </td>
+        </tr>
+      </table>
+
+      <table class="dvr">
+        <tr>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Previous"><i
+                class="bi bi-skip-backward"></i></button></td>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Play"><i
+                class="bi bi-play"></i></button></td>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Next"><i
+                class="bi bi-skip-forward"></i></button></td>
+        </tr>
+        <tr>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Rev"><i
+                class="bi bi-rewind"></button></td>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Pause"><i
+                class="bi bi-pause"></button></td>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="FF"><i
+                class="bi bi-fast-forward"></i></button></td>
+        </tr>
+        <tr style="padding-bottom: 250px;">
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="Stop"><i
+                class="bi bi-stop"></button></td>
+          <td><a href="settings.html" class="btn btn-default" name="button" id="function"><i class="bi bi-gear"></i></a>
+          </td>
+          <td><button class="btn btn-default" type="submit" name="button" id="function" value="REC"><i
+                class="bi bi-record"></i></button></td>
+        </tr>
+        <tr>
+          <td colspan="3">{{model}}</td>
+        </tr>
+      </table>
+
+
+
+    </form>
+
+  </div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<head>
+
+  <title>IR Remote</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+    integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+    integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+    crossorigin="anonymous"></script>
+
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    div.container {
+      position: relative;
+      text-align: center;
+      width: 500px;
+      background-color: darkgray;
+      padding-top: 50px;
+      padding-bottom: 90px;
+    }
+
+    table {
+      table-layout: fixed;
+      align-self: center;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 30px;
+      background-color: lightgray;
+
+    }
+
+    form {
+      height: 100%;
+
+    }
+
+
+    td {
+      padding: 5px;
+
+    }
+
+    select {
+      width: 160px;
+      height: 50px;
+      font-size: 18px;
+    }
+
+    button {
+      font-size: 48px;
+    }
+
+    h1.centered {
+      width: 100%;
+      text-align: center;
+    }
+
+    i {
+      font-size: 5rem;
+    }
+
+    .btn {
+      text-align: center;
+      font-size: 26px;
+      width: 130px;
+      height: 50px;
+    }
+
+    .key {
+      text-align: center;
+      font-size: 26px;
+    }
+
+    .time {
+      text-align: center;
+    }
+
+    .pulseLength {
+      font-size: 26px;
+    }
+
+    .headings {
+      font-size: 26px;
+    }
+
+    .txtbox {
+      width: 65px;
+      text-align: center;
+    }
+
+    .form-select {
+      width: 160px;
+    }
+
+    .form-check-input {
+      width: 50px;
+      height: 50px;
+
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <h1 class="centered">IR-Remote Settings</h1>
+  <hr>
+  <div class="container">
+    <form action="/settings.html" method="post">
+      <table>
+        <tr class="headings">
+          <td colspan="3">Remote Configuration</td>
+        </tr>
+        <tr class="headings">
+          <td>Device:</td>
+          <td>
+            <select class="form-select form-select-sm" style="width: 160px;" aria-label=".form-select-sm example"
+              name="devices">
+              <option value="{{name}}" selected>{{name}}</option>
+              {% for item in devices %}
+              {% if name != item %}
+              <option value="{{item}}">{{item}}</option>
+              {% endif %}
+              {% endfor %}
+            </select>
+          </td>
+          <td><input class="btn btn-lg btn-default width=auto" type="submit" value="Load"></td>
+        </tr>
+        <tr class="pulseLength">
+          <td colspan="2">Hold Length (secs)</td>
+          <td><input class="txtbox" type="text" id="" name="pulseLength" value="{{pulseLength}}"></td>
+        </tr>
+        <tr class="headings">
+          <td>Button</td>
+          <td>Key</td>
+          <td>Hold</td>
+        </tr>
+        {% for btn in btns %}
+        <tr>
+          <td class="btn">{{btn}}</td>
+          <td class="key">
+            <select class="form-select" aria-label="Default select example" name="{{btn}}">
+              <option value="{{btns[btn].key}}" selected>{{btns[btn].key}}</option>
+              {% for item in option %}
+              {% if btns[btn].key != item %}
+              <option value="{{item}}">{{item}}</option>
+              {% endif %}
+              {% endfor %}
+            </select>
+          </td>
+          <td class="time">
+            {% if btns[btn].pulse == "short" %}
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="{{btn}}_pulse">
+            {% else %}
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="{{btn}}_pulse" checked>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <a href="/" class="btn btn-lg btn-default width=auto">Cancel</a>
+      <input class="btn btn-lg btn-default width=auto" type="submit" value="Save">
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
