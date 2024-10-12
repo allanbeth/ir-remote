@@ -70,12 +70,13 @@ class remote:
         if self.activePath.is_file():
             file = open(self.activePath, "r")
             active = json.load(file)
-            self.name = active['name']
             file.close()
+            self.name = active['name']
         else:
             active['name'] = "None"
             with open(self.activePath, "w") as f:
                 json.dump(active, f)
+                f.close()
             self.name = active['name']
 
   
