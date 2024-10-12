@@ -240,3 +240,189 @@
 2024-10-12 01:58:15 - INFO - remotelog - 28 - Subscribed Successfully
 2024-10-12 01:58:15 - WARNING - _internal - 97 -  * Debugger is active!
 2024-10-12 01:58:15 - INFO - _internal - 97 -  * Debugger PIN: 830-027-559
+2024-10-12 02:47:07 - INFO - remotelog - 28 - Loaded remotes: ['Samsung_BN59-00940A', 'Panasonic_N2QAYB000048']
+2024-10-12 02:47:07 - INFO - remotelog - 28 - Set Remote: Samsung_BN59-00940A
+2024-10-12 02:47:07 - INFO - remotelog - 28 - -------Loading active remote-------
+2024-10-12 02:47:07 - INFO - remotelog - 28 - Loaded: Samsung_BN59-00940A
+2024-10-12 02:47:22 - INFO - remotelog - 28 - Loaded remotes: ['Samsung_BN59-00940A', 'Panasonic_N2QAYB000048']
+2024-10-12 02:47:22 - INFO - remotelog - 28 - Set Remote: Samsung_BN59-00940A
+2024-10-12 02:47:22 - INFO - remotelog - 28 - -------Loading active remote-------
+2024-10-12 02:47:22 - INFO - remotelog - 28 - Loaded: Samsung_BN59-00940A
+2024-10-12 02:50:41 - INFO - remotelog - 28 - /home/irremote/IR-Remote/config/active.json
+2024-10-12 02:53:12 - INFO - remotelog - 28 - /home/irremote/IR-Remote/config/active.json
+2024-10-12 02:53:12 - INFO - remotelog - 28 - Loaded remotes: ['Samsung_BN59-00940A', 'Panasonic_N2QAYB000048']
+2024-10-12 02:53:12 - INFO - remotelog - 28 - Set Remote: Samsung_BN59-00940A
+2024-10-12 02:53:12 - INFO - remotelog - 28 - -------Loading active remote-------
+2024-10-12 02:53:12 - INFO - remotelog - 28 - Loaded: Samsung_BN59-00940A
+2024-10-12 02:53:12 - INFO - remotelog - 28 - -------Active Device Updated-------
+2024-10-12 02:53:12 - INFO - remotelog - 28 - -------Launching MQTT-------
+2024-10-12 02:53:12 - INFO - remotelog - 28 - Connecting to Broker: localhost
+2024-10-12 02:53:12 - INFO - remotelog - 28 - -------Connecting-------.
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Connected to MQTT Broker Successfully
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------Start MQTT Discovery-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Remote: Samsung_BN59-00940A
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Topic: Power
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/pwr/set
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Topic: Ch +
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/chup/set
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Topic: Ch -
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/chdwn/set
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Topic: Vol +
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/volup/set
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Topic: Vol -
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/voldwn/set
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Topic: Mute
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/mute/set
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Topic: Info
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/info/set
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:53:13 - INFO - _internal - 97 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8081
+ * Running on http://192.168.1.82:8081
+2024-10-12 02:53:13 - INFO - _internal - 97 - [33mPress CTRL+C to quit[0m
+2024-10-12 02:53:13 - INFO - _internal - 97 -  * Restarting with stat
+2024-10-12 02:53:13 - INFO - remotelog - 28 - /home/irremote/IR-Remote/config/active.json
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Loaded remotes: ['Samsung_BN59-00940A', 'Panasonic_N2QAYB000048']
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------Loading active remote-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Loaded: Samsung_BN59-00940A
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------Active Device Updated-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------Launching MQTT-------
+2024-10-12 02:53:13 - INFO - remotelog - 28 - Connecting to Broker: localhost
+2024-10-12 02:53:13 - INFO - remotelog - 28 - -------Connecting-------.
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Connected to MQTT Broker Successfully
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------Start MQTT Discovery-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Remote: Samsung_BN59-00940A
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Topic: Power
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/pwr/set
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Topic: Ch +
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/chup/set
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Topic: Ch -
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/chdwn/set
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Topic: Vol +
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/volup/set
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Topic: Vol -
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/voldwn/set
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Topic: Mute
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/mute/set
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Topic: Info
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:53:14 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/info/set
+2024-10-12 02:53:14 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:53:14 - WARNING - _internal - 97 -  * Debugger is active!
+2024-10-12 02:53:14 - INFO - _internal - 97 -  * Debugger PIN: 830-027-559
+2024-10-12 02:54:29 - INFO - _internal - 97 - 192.168.1.114 - - [12/Oct/2024 02:54:29] "GET / HTTP/1.1" 200 -
+2024-10-12 02:54:31 - INFO - remotelog - 28 - -------Webserver Button-------
+2024-10-12 02:54:31 - INFO - remotelog - 28 - Button Pressed: Info
+2024-10-12 02:54:31 - INFO - remotelog - 28 - IR Signal Sent for: Samsung_BN59-00940A KEY_INFO
+2024-10-12 02:54:31 - INFO - _internal - 97 - 192.168.1.114 - - [12/Oct/2024 02:54:31] "POST / HTTP/1.1" 200 -
+2024-10-12 02:57:49 - INFO - _internal - 97 -  * Detected change in '/home/irremote/IR-Remote/remote.py', reloading
+2024-10-12 02:57:49 - INFO - _internal - 97 -  * Restarting with stat
+2024-10-12 02:57:50 - INFO - remotelog - 28 - /home/irremote/IR-Remote/config/active.json
+2024-10-12 02:57:50 - INFO - remotelog - 28 - Loaded remotes: ['Samsung_BN59-00940A', 'Panasonic_N2QAYB000048']
+2024-10-12 02:57:50 - INFO - remotelog - 28 - -------Loading active remote-------
+2024-10-12 02:57:50 - INFO - remotelog - 28 - Loaded: Samsung_BN59-00940A
+2024-10-12 02:57:50 - INFO - remotelog - 28 - -------Active Device Updated-------
+2024-10-12 02:57:50 - INFO - remotelog - 28 - -------Launching MQTT-------
+2024-10-12 02:57:50 - INFO - remotelog - 28 - Connecting to Broker: localhost
+2024-10-12 02:57:50 - INFO - remotelog - 28 - -------Connecting-------.
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Connected to MQTT Broker Successfully
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------Start MQTT Discovery-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Remote: Samsung_BN59-00940A
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Topic: Power
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/pwr/set
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Topic: Ch +
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/chup/set
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Topic: Ch -
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/chdwn/set
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Topic: Vol +
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/volup/set
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Topic: Vol -
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/voldwn/set
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Topic: Mute
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/mute/set
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------MQTT Publish-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Topic: Info
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Published Successfully
+2024-10-12 02:57:51 - INFO - remotelog - 28 - -------MQTT Subscribe-------
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Topic: IR-Remote/Samsung_BN59-00940A/info/set
+2024-10-12 02:57:51 - INFO - remotelog - 28 - Subscribed Successfully
+2024-10-12 02:57:51 - WARNING - _internal - 97 -  * Debugger is active!
+2024-10-12 02:57:51 - INFO - _internal - 97 -  * Debugger PIN: 830-027-559

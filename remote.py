@@ -18,6 +18,15 @@ class activeRemote:
         self.name = self.config['name']
         self.remoteLog.info("-------Loading active remote-------")
         self.remoteLog.info("Loaded: "+self.name+"")
+
+    def saveActive(self):
+        #set active remote
+        file = open(self.activePath, "r")
+        config = json.load(file)
+        config['active'] = self.name
+        with open(self.activePath, "w") as f:
+            json.dump(config, f)
+        self.remoteLog.info("Master Config Updated")
         
     def keyPress(self, key):
         return key  
@@ -42,12 +51,32 @@ class remote:
         self.masterPath = self.root / "irMasterConfig.json"    
         file = open(self.masterPath, "r")
         self.masterConfig = json.load(file)
-        self.name = self.masterConfig['active']
         file.close()
         self.config = {}
 
         #configure buttons from master config 
         self.config['btns'] = self.masterConfig['btns']
+
+        #check config directory exists
+        configDir = "config" 
+        configPath = self.root / configDir
+        Path(configPath).mkdir(parents=True, exist_ok=True) 
+
+        self.activeFile = "config/active.json"
+        self.activePath = self.root / self.activeFile
+        self.remoteLog.info( self.activePath)
+        active = {}
+        
+        if self.activePath.is_file():
+            file = open(self.activePath, "r")
+            active = json.load(file)
+            self.name = active['name']
+        else:
+            active['name'] = "None"
+            with open(self.activePath, "w") as f:
+                json.dump(active, f)
+            self.name = active['name']
+  
 
         #get device list
         self.deviceList = self.list()
@@ -81,14 +110,9 @@ class remote:
         
 
     def load(self, name):
-        #check config directory exists
-        configDir = "config" 
-        configPath = self.root /configDir
-        Path(configPath).mkdir(parents=True, exist_ok=True) 
-        
+     
         self.configFile = "config/%s.json" % name
-        self.configPath = self.root / self.configFile 
-        #self.remoteLog.info("Config path: %s" % self.configPath)       
+        self.configPath = self.root / self.configFile       
         if self.configPath.is_file():
             self.set()
         else:
@@ -119,7 +143,8 @@ class remote:
         self.getKeys()     
 
         #save active device name
-        self.updateMaster()   
+        #self.updateMaster()   
+        self.updateActive()  
                      
     def add(self):
         self.getKeys() 
@@ -173,13 +198,14 @@ class remote:
             json.dump(config, f)
         self.remoteLog.info("Buttons Updated")
         
-    def updateMaster(self):
-        file = open(self.masterPath, "r")
-        config = json.load(file)
-        config['active'] = self.name
-        with open(self.masterPath, "w") as f:
-            json.dump(config, f)
-        self.remoteLog.info("Master Config Updated")
+    def updateActive(self):
+        #set active remote
+        file = open(self.activePath, "r")
+        active = json.load(file)
+        active['name'] = self.name
+        with open(self.activePath, "w") as f:
+            json.dump(active, f)
+        self.remoteLog.info("-------Active Device Updated-------")
 
     def getKeys(self):
         #load keys codes
