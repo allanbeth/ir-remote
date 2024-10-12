@@ -71,11 +71,13 @@ class remote:
             file = open(self.activePath, "r")
             active = json.load(file)
             self.name = active['name']
+            file.close()
         else:
             active['name'] = "None"
             with open(self.activePath, "w") as f:
                 json.dump(active, f)
             self.name = active['name']
+
   
 
         #get device list
