@@ -146,7 +146,7 @@ class remote:
         self.config['btns'] = btns
         self.config['option'] = keys
         self.config['pulseLength'] = "2"
-        self.update()
+        self.update(self.config)
 
     def send(self, key):
         k = self.config['btns'][key]['key']
