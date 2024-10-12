@@ -18,15 +18,6 @@ class activeRemote:
         self.name = self.config['name']
         self.remoteLog.info("-------Loading active remote-------")
         self.remoteLog.info("Loaded: "+self.name+"")
-
-    def saveActive(self):
-        #set active remote
-        file = open(self.activePath, "r")
-        config = json.load(file)
-        config['active'] = self.name
-        with open(self.activePath, "w") as f:
-            json.dump(config, f)
-        self.remoteLog.info("Master Config Updated")
         
     def keyPress(self, key):
         return key  
@@ -129,7 +120,6 @@ class remote:
         self.config['name'] = self.name 
         self.config['make'] = self.name.split('_', 1)[0]
         self.config['model'] = self.name.split('_', 1)[-1]  
-        #self.remoteLog.info("Loaded Remote: %s " % self.name)
 
         #assign buttons
         for btn in self.config['btns'] :

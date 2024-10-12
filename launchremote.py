@@ -34,11 +34,8 @@ class launchremote:
 
     def loadMqtt(self):
         self.mqtt = remoteMqtt()
-        self.mqtt.run()
         name = self.remote.config['name']
-        self.remoteLog.info("-------Start MQTT Discovery-------")
-        self.remoteLog.info("Remote: "+name+"")
-        self.mqtt.haDiscovery(name)
+        self.mqtt.run(name)
         self.mqtt.client.on_message = self.mqttMessage 
 
     def loadRemote(self):
@@ -50,8 +47,6 @@ class launchremote:
     def loadWebserver(self):     
         self.mywebserver = flaskWrapper(self.remote.activeRemote)
         self.mywebserver.run()
-
-        pass
 
     def mqttMessage(self, client, userdata, msg):
         key = msg.payload.decode()
