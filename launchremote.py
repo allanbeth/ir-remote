@@ -44,8 +44,9 @@ class launchremote:
         self.remote.activeRemote.updateConfig = self.webserverUpdate
         self.remote.activeRemote.switchDevice = self.webserverSwitch
             
-    def loadWebserver(self):     
-        self.mywebserver = flaskWrapper(self.remote.activeRemote)
+    def loadWebserver(self):  
+        activeRemote = self.remote.activeRemote   
+        self.mywebserver = flaskWrapper(activeRemote)
         self.mywebserver.run()
 
     def mqttMessage(self, client, userdata, msg):
