@@ -62,7 +62,7 @@ class remote:
         configPath = self.root / configDir
         Path(configPath).mkdir(parents=True, exist_ok=True) 
 
-        self.activeFile = "config/active.json"
+        self.activeFile = "config/activeDevice.json"
         self.activePath = self.root / self.activeFile
         self.remoteLog.info( self.activePath)
         active = {}
