@@ -41,7 +41,7 @@ class remoteMqtt:
         self.remoteLog.info("Remote: "+remote+"")
         make = remote.split('_', 1)[0]
         model = remote.split('_', 1)[-1]  
- 
+
 
         #Power button
         discoveryMsg = {"name": "Power",
