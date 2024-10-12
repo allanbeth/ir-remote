@@ -18,6 +18,8 @@ class activeRemote:
         self.name = self.config['name']
         self.remoteLog.info("-------Loading active remote-------")
         self.remoteLog.info("Loaded: "+self.name+"")
+
+
         
     def keyPress(self, key):
         return key  
@@ -177,7 +179,7 @@ class remote:
         if p == "long":
             l = int(self.config['pulseLength']) 
         else:
-            l = 0.5    
+            l = 0.2    
         os.system('irsend SEND_START %s %s'%(self.name, self.config['btns'][key]['key']))
         time.sleep(l)
         os.system('irsend SEND_STOP %s %s'%(self.name, self.config['btns'][key]['key']))

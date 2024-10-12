@@ -27,7 +27,7 @@ class launchremote:
             
         #launch webserver
         self.loadWebserver()
-
+        
         
     def loadremoteLog(self):
         self.remoteLog = remoteLog()
@@ -44,9 +44,8 @@ class launchremote:
         self.remote.activeRemote.updateConfig = self.webserverUpdate
         self.remote.activeRemote.switchDevice = self.webserverSwitch
             
-    def loadWebserver(self):  
-        activeRemote = self.remote.activeRemote   
-        self.mywebserver = flaskWrapper(activeRemote)
+    def loadWebserver(self):     
+        self.mywebserver = flaskWrapper(self.remote.activeRemote)
         self.mywebserver.run()
 
     def mqttMessage(self, client, userdata, msg):
