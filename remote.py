@@ -82,8 +82,9 @@ class remote:
 
     def load(self, name):
         #check config directory exists
-        configDir = ""+self.root+"/config" 
-        Path(configDir).mkdir(parents=True, exist_ok=True) 
+        configDir = "config" 
+        configPath = self.root /configDir
+        Path(configPath).mkdir(parents=True, exist_ok=True) 
         
         self.configFile = "config/%s.json" % name
         self.configPath = self.root / self.configFile 
