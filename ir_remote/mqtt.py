@@ -4,7 +4,7 @@ import sys, os, time, json
 import paho.mqtt.client as mqtt
 
 try:
-    from remotelog import remoteLog
+    from .remotelog import remoteLog
 except Exception as ex:
     print("Error" + str(ex))
     sys.exit()

@@ -3,10 +3,10 @@
 import sys
 
 try:
-    from remotelog import remoteLog
-    from webserver import flaskWrapper
-    from remote import remote
-    from mqtt import remoteMqtt
+    from .remotelog import remoteLog
+    from .webserver import flaskWrapper
+    from .remote import remote
+    from .mqtt import remoteMqtt
 except Exception as ex:
     print("Error" + str(ex))
     sys.exit()
@@ -75,12 +75,13 @@ class launchremote:
         self.remote.load(name)
         self.remoteLog.info("Switched Successfully")
 
+def run():
+    remote = launchremote()
 
 if __name__ == '__main__':
         
     #Start IR Remote
-    remote = launchremote()
-
+    run()
         
 
             
