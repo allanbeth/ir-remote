@@ -182,6 +182,7 @@ class remote:
         self.update(device, config)
 
     def send(self, device, key):
+        self.remoteLog.info(""+device+" "+k+"")
         
         #get code from keypress
         configFile = "config/%s.json" % device
@@ -192,10 +193,10 @@ class remote:
         k = config['btns'][key]['key']
         p = config['btns'][key]['pulse'] 
         if p == "long":
-            l = int(self.activeConfig['pulseLength']) 
+            l = int(self.config['pulseLength']) 
         else:
             l = 0.1   
-        os.system('irsend SEND_START %s %s'%(self.active, self.activeConfig['btns'][key]['key']))
+        #os.system('irsend SEND_START %s %s'%(self.active, self.activeConfig['btns'][key]['key']))
         os.system('irsend SEND_START %s %s'%(device, k))
         time.sleep(l)
         #os.system('irsend SEND_STOP %s %s'%(self.active, self.activeConfig['btns'][key]['key']))

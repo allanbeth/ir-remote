@@ -120,7 +120,7 @@ class remoteMqtt:
         #mute button
         discoveryMsg = {"name": "Mute",
             "command_topic":"IR-Remote/"+remote+"/mute/set",
-            "payload_press":"Mute",
+            "payload_press":""+remote+" Mute",
             "unique_id":"mute_"+remote+"",
             "device": {
                 

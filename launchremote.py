@@ -50,9 +50,10 @@ class launchremote:
 
     def mqttMessage(self, client, userdata, msg):
         data = msg.payload.decode()
+        self.remoteLog.info(data)
         device = data.split(' ', 1)[0]
         key = data.split(' ', 1)[-1] 
-        self.remoteLog.info(data)
+        self.remoteLog.info(device)
         self.remoteLog.info("-------MQTT Button-------")
         self.remoteLog.info("Button Pressed: "+key+"")
         self.remote.send(device, key)
