@@ -19,7 +19,7 @@ class remoteMqtt:
         self.port = 1883
         self.client_id = 'irRemote-mqtt-bridge'  
 
-    def run(self, remote):       
+    def run(self, deviceList):       
         mqtt.Client.connected_flag = False
         mqtt.Client.bad_connection_flag=False
         self.client = mqtt.Client()
@@ -33,7 +33,9 @@ class remoteMqtt:
         if self.client.bad_connection_flag:
             self.client.loop_stop()
             sys.exit()
-        self.haDiscovery(remote)
+
+        for device in deviceList:
+            self.haDiscovery(device)
 
     def haDiscovery(self, remote):
 
