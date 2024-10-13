@@ -14,10 +14,10 @@ class activeRemote:
 
     def __init__(self, config):        
         self.remoteLog = remoteLog()
-        self.config = config
-        self.name = self.config['name']
+        self.activeConfig = config
+        self.active = self.activeConfig['name']
         self.remoteLog.info("-------Loading active remote-------")
-        self.remoteLog.info("Loaded: "+self.name+"")
+        self.remoteLog.info("Loaded: "+self.active+"")
 
 
         
@@ -45,10 +45,10 @@ class remote:
         file = open(self.masterPath, "r")
         self.masterConfig = json.load(file)
         file.close()
-        self.config = {}
+        self.activeConfig = {}
 
         #configure buttons from master config 
-        self.config['btns'] = self.masterConfig['btns']
+        self.activeConfig['btns'] = self.masterConfig['btns']
 
         #check config directory exists
         configDir = "config" 
@@ -64,15 +64,13 @@ class remote:
             file = open(self.activePath, "r")
             active = json.load(file)
             file.close()
-            self.name = active['name']
+            self.active = active['name']
         else:
             active['name'] = "None"
             with open(self.activePath, "w") as f:
                 json.dump(active, f)
                 f.close()
-            self.name = active['name']
-
-  
+            self.active = active['name']
 
         #get device list
         self.deviceList = self.list()
@@ -81,12 +79,12 @@ class remote:
             self.remoteLog.info("No Config files installed")
             exit()
         else:
-            self.config['devices'] = self.deviceList
-        if self.name == "None":
-            self.name = self.deviceList[0]
-            self.remoteLog.info("Set Remote: %s" % self.name)
+            self.activeConfig['devices'] = self.deviceList
+        if self.active == "None":
+            self.active = self.deviceList[0]
+            self.remoteLog.info("Set Remote: %s" % self.active)
         
-        self.load(self.name)
+        self.load()
 
 
     def list(self):
@@ -105,48 +103,57 @@ class remote:
         return(deviceList)
         
 
-    def load(self, name):
-     
-        self.configFile = "config/%s.json" % name
-        self.configPath = self.root / self.configFile       
-        if self.configPath.is_file():
-            self.set()
+    def load(self):
+        #load devices
+        for device in self.deviceList:
+            file = "config/%s.json" % device
+            path = self.root / file
+            if path.is_file():
+                pass
+            else:
+                self.add(device)
+
+        self.activeConfigFile = "config/%s.json" % self.active
+        self.activeConfigPath = self.root / self.activeConfigFile       
+        if self.activeConfigPath.is_file():
+            self.setActive()
         else:
-            self.add()
-            self.set()
+            self.add(device)
+            self.setActive()
         
 
-    def set(self): 
-        file = open(self.configPath)
+    def setActive(self): 
+        file = open(self.activeConfigPath)
         config = json.load(file)
-        self.config['name'] = self.name 
-        self.config['make'] = self.name.split('_', 1)[0]
-        self.config['model'] = self.name.split('_', 1)[-1]  
+        self.activeConfig['name'] = self.active 
+        self.activeConfig['make'] = self.active.split('_', 1)[0]
+        self.activeConfig['model'] = self.active.split('_', 1)[-1]  
 
         #assign buttons
-        for btn in self.config['btns'] :
+        for btn in self.activeConfig['btns'] :
             data = config['btns'][btn]['key']
             pulse = config['btns'][btn]['pulse']                   
             if pulse == 'on':
-                self.config['btns'][btn]['pulse'] = "long"
+                self.activeConfig['btns'][btn]['pulse'] = "long"
             else:
-                self.config['btns'][btn]['pulse'] = "short" 
-            self.config['btns'][btn]['key'] = data 
-        self.config['pulseLength'] = config['pulseLength'] 
-        self.activeRemote = activeRemote(self.config)
+                self.activeConfig['btns'][btn]['pulse'] = "short" 
+            self.activeConfig['btns'][btn]['key'] = data 
+        self.activeConfig['pulseLength'] = config['pulseLength'] 
+        self.activeRemote = activeRemote(self.activeConfig)
         #self.remoteLog.info("Buttons Assigned Successfully") 
-        self.getKeys()     
+        self.getKeys(self.active)     
 
         #save active device name
         #self.updateMaster()   
         self.updateActive()  
                      
-    def add(self):
-        self.getKeys() 
+    def add(self, device):
+         
 
         #initial button config
-        btns = self.config['btns']
-        keys = self.config['option']
+        btns = self.activeConfig['btns']
+        keys = self.getKeys(device)
+        #keys = self.activeConfig['option']
         for btn in btns:
             for key in keys:
                 vu = "VOLUMEUP"
@@ -168,28 +175,41 @@ class remote:
                     btns['Ch +']['key'] = key
                 elif chd in key:
                     btns['Ch -']['key'] = key
-        self.config['btns'] = btns
-        self.config['option'] = keys
-        self.config['pulseLength'] = "2"
-        self.update(self.config)
+        config = {}
+        config['btns'] = btns
+        config['option'] = keys
+        config['pulseLength'] = "2"
+        self.update(device, config)
 
-    def send(self, key):
-        k = self.config['btns'][key]['key']
-        p = self.config['btns'][key]['pulse'] 
+    def send(self, device, key):
+        
+        #get code from keypress
+        configFile = "config/%s.json" % device
+        path = self.root / configFile
+        file = open(path, "r")
+        config = json.load(file)
+
+        k = config['btns'][key]['key']
+        p = config['btns'][key]['pulse'] 
         if p == "long":
-            l = int(self.config['pulseLength']) 
+            l = int(self.activeConfig['pulseLength']) 
         else:
-            l = 0.2    
-        os.system('irsend SEND_START %s %s'%(self.name, self.config['btns'][key]['key']))
+            l = 0.1   
+        os.system('irsend SEND_START %s %s'%(self.active, self.activeConfig['btns'][key]['key']))
+        os.system('irsend SEND_START %s %s'%(device, k))
         time.sleep(l)
-        os.system('irsend SEND_STOP %s %s'%(self.name, self.config['btns'][key]['key']))
-        self.remoteLog.info("IR Signal Sent for: "+self.name+" "+self.config['btns'][key]['key']+"")
+        #os.system('irsend SEND_STOP %s %s'%(self.active, self.activeConfig['btns'][key]['key']))
+        os.system('irsend SEND_STOP %s %s'%(device, k))
+        #self.remoteLog.info("IR Signal Sent for: "+self.active+" "+self.activeConfig['btns'][key]['key']+"")
+        self.remoteLog.info("IR Signal Sent for: "+device+" "+k+"")
 
-    def update(self, data):
+    def update(self, device, data):
         config = {}
         config['btns'] = data['btns']
         config['pulseLength'] = data['pulseLength']
-        with open(self.configPath, "w") as f:
+        file = "config/%s.json" % device
+        path = self.root / file
+        with open(path, "w") as f:
             json.dump(config, f)
         self.remoteLog.info("Buttons Updated")
         
@@ -197,15 +217,15 @@ class remote:
         #set active remote
         file = open(self.activePath, "r")
         active = json.load(file)
-        active['name'] = self.name
+        active['name'] = self.active
         with open(self.activePath, "w") as f:
             json.dump(active, f)
         self.remoteLog.info("-------Active Device Updated-------")
 
-    def getKeys(self):
+    def getKeys(self, device):
         #load keys codes
         keyPath = self.root / "key_list.txt"
-        get_list = 'irsend LIST %s "" > %s' % (self.name, keyPath)
+        get_list = 'irsend LIST %s "" > %s' % (device, keyPath)
         list = os.system(get_list)
         #store key codes
         keys = []
@@ -217,5 +237,6 @@ class remote:
                 keys.append(x)
             os.system("rm %s" % keyPath)
 
-        self.config['option'] = keys  
+        return keys
+        #self.activeConfig['option'] = keys  
 

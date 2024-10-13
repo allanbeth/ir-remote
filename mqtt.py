@@ -134,7 +134,7 @@ class remoteMqtt:
         #Info button
         discoveryMsg = {"name": "Info",
             "command_topic":"IR-Remote/"+remote+"/info/set",
-            "payload_press":"Info",
+            "payload_press":""+remote+" Info",
             "unique_id":"info_"+remote+"",
             "device": {
                 "name": remote,

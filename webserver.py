@@ -27,33 +27,33 @@ class flaskWrapper:
             key = request.form.get('button') 
             self.remote.keyPress(key)
             key = ""                 
-            return render_template('main.html', **self.remote.config) 
+            return render_template('main.html', **self.remote.activeConfig) 
           
         if request.method == "GET":      
-            return render_template('main.html', **self.remote.config)
+            return render_template('main.html', **self.remote.activeConfig)
         
     def settings(self):       
         if request.method == "POST":
             r = request.form.get('devices')
             p = request.form.get('pulseLength')
-            if r == self.remote.name:           
-                self.remote.config['pulseLength'] = p   
-                for btn in self.remote.config['btns'] :
+            if r == self.remote.active:           
+                self.remote.activeConfig['pulseLength'] = p   
+                for btn in self.remote.activeConfig['btns'] :
                     data = request.form.get('%s' % (btn))
                     pulse = request.form.get('%s_pulse' % (btn))                    
                     if pulse == 'on':
-                        self.remote.config['btns'][btn]['pulse'] = "long"
+                        self.remote.activeConfig['btns'][btn]['pulse'] = "long"
                     else:
-                        self.remote.config['btns'][btn]['pulse'] = "short" 
-                    self.remote.config['btns'][btn]['key'] = data         
-                self.remote.updateConfig(self.remote.config)                 
+                        self.remote.activeConfig['btns'][btn]['pulse'] = "short" 
+                    self.remote.activeConfig['btns'][btn]['key'] = data         
+                self.remote.updateConfig(self.remote.activeConfig)                 
             else:
-                self.remote.name = r
-                self.remote.switchDevice(self.remote.name)                       
-            return render_template('main.html', **self.remote.config)
+                self.remote.active = r
+                self.remote.switchDevice(self.remote.active)                       
+            return render_template('main.html', **self.remote.activeConfig)
         
         if request.method == "GET":       
-            return render_template('settings.html', **self.remote.config)
+            return render_template('settings.html', **self.remote.activeConfig)
 
 
     def run(self):

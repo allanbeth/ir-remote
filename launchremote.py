@@ -49,15 +49,18 @@ class launchremote:
         self.mywebserver.run()
 
     def mqttMessage(self, client, userdata, msg):
-        key = msg.payload.decode()
+        data = msg.payload.decode()
+        device = data.split(' ', 1)[0]
+        key = data.split(' ', 1)[-1] 
+        self.remoteLog.info(data)
         self.remoteLog.info("-------MQTT Button-------")
         self.remoteLog.info("Button Pressed: "+key+"")
-        self.remote.send(key)
+        self.remote.send(device, key)
 
     def webserverkeypress(self, key):
         self.remoteLog.info("-------Webserver Button-------")
         self.remoteLog.info("Button Pressed: %s" % key)
-        self.remote.send(key)
+        self.remote.send(self.remote.activeRemote.active, key)
 
     def webserverUpdate(self, data):
         self.remoteLog.info("-------Saving config-------")
