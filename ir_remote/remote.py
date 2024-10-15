@@ -4,7 +4,7 @@ import os, time, sys, json
 
 try:
     from pathlib import Path
-    from remotelog import remoteLog
+    from .remotelog import remoteLog
 except Exception as ex:
     print("Error" + str(ex))
     sys.exit()
@@ -40,7 +40,7 @@ class remote:
         self.remoteLog = remoteLog()
         
         #load master config
-        self.root = Path(__file__).parents[0]
+        self.root = Path(__file__).parents[1]
         self.masterPath = self.root / "irMasterConfig.json"    
         file = open(self.masterPath, "r")
         self.masterConfig = json.load(file)
