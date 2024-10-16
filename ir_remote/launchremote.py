@@ -3,10 +3,10 @@
 import sys
 
 try:
-    from .remotelog import remoteLog
-    from .webserver import flaskWrapper
-    from .remote import remote
-    from .mqtt import remoteMqtt
+    from remotelog import remoteLog
+    from webserver import flaskWrapper
+    from remote import remote
+    from mqtt import remoteMqtt
 except Exception as ex:
     print("Error" + str(ex))
     sys.exit()
@@ -50,10 +50,8 @@ class launchremote:
 
     def mqttMessage(self, client, userdata, msg):
         data = msg.payload.decode()
-        self.remoteLog.info(data)
         device = data.split(' ', 1)[0]
         key = data.split(' ', 1)[-1] 
-        self.remoteLog.info(device)
         self.remoteLog.info("-------MQTT Button-------")
         self.remoteLog.info("Button Pressed: "+key+"")
         self.remote.send(device, key)
@@ -78,7 +76,7 @@ class launchremote:
 def run():
     remote = launchremote()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
         
     #Start IR Remote
     run()

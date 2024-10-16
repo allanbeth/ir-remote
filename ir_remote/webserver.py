@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 
-import sys
+import sys, os
 
 
 try:
     from flask import Flask, render_template, request
     from flask_restful import Api, Resource
     from pathlib import Path
+    from remotelog import remoteLog
 except Exception as ex:
     print("Error" + str(ex))
     sys.exit()
@@ -14,10 +15,15 @@ except Exception as ex:
 
 class flaskWrapper:
     def __init__(self, remote):
-        self.app = Flask(__name__)
-        self.root = Path(__file__).parents[0]
+        self.remoteLog = remoteLog()
+        self.remoteLog.info("-------Loading Webserver-------")
+        self.root = Path(__file__).parents[1]
+        #template_dir = os.path.join(template_dir, 'templates')
+        self.templatePath = self.root / "templates"
+        self.app = Flask(__name__, template_folder=self.templatePath)
         self.app.route("/", methods=["GET", "POST"])(self.main)
         self.app.route("/settings.html", methods=["GET", "POST"])(self.settings)
+        self.remoteLog.info("Webserver Loaded Successfully")
         self.remote = remote  
 
            

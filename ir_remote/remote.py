@@ -4,7 +4,7 @@ import os, time, sys, json
 
 try:
     from pathlib import Path
-    from .remotelog import remoteLog
+    from remotelog import remoteLog
 except Exception as ex:
     print("Error" + str(ex))
     sys.exit()
@@ -182,7 +182,7 @@ class remote:
         self.update(device, config)
 
     def send(self, device, key):
-        self.remoteLog.info(""+device+" "+k+"")
+        #self.remoteLog.info(""+device+" "+key+"")
         
         #get code from keypress
         configFile = "config/%s.json" % device
@@ -195,7 +195,7 @@ class remote:
         if p == "long":
             l = int(self.config['pulseLength']) 
         else:
-            l = 0.1   
+            l = 0   
         #os.system('irsend SEND_START %s %s'%(self.active, self.activeConfig['btns'][key]['key']))
         os.system('irsend SEND_START %s %s'%(device, k))
         time.sleep(l)

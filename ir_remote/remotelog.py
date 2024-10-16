@@ -8,7 +8,7 @@ except Exception as ex:
     print("Error" + str(ex))
     sys.exit()
 
-root = Path(__file__).parents[0]
+root = Path(__file__).parents[1]
 logPath = root / "irRemote.log"
 log_format = "%(asctime)s - %(levelname)s - %(module)s - %(lineno)d - %(message)s"
 date_format = "%Y-%m-%d %H:%M:%S"

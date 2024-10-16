@@ -4,7 +4,7 @@ import sys, os, time, json
 import paho.mqtt.client as mqtt
 
 try:
-    from .remotelog import remoteLog
+    from remotelog import remoteLog
 except Exception as ex:
     print("Error" + str(ex))
     sys.exit()
@@ -147,16 +147,16 @@ class remoteMqtt:
         
     def publish(self, topic, msg):           
             config = json.loads(msg) 
-            self.remoteLog.info("-------MQTT Publish-------")
-            self.remoteLog.info("Topic: "+config['name']+"")
-            self.client.publish(topic, msg, qos=1, retain=False)
-            self.remoteLog.info("Published Successfully" )
+            #self.remoteLog.info("-------MQTT Publish-------")
+            #self.remoteLog.info("Topic: "+config['name']+"")
+            self.client.publish(topic, msg, qos=2, retain=False)
+            #self.remoteLog.info("Published Successfully" )
             
     def subscribe(self, topic):
-        self.remoteLog.info("-------MQTT Subscribe-------")
-        self.remoteLog.info("Topic: "+topic+"")
+        #self.remoteLog.info("-------MQTT Subscribe-------")
+        #self.remoteLog.info("Topic: "+topic+"")
         self.client.subscribe(topic, 1)
-        self.remoteLog.info("Subscribed Successfully")
+        #self.remoteLog.info("Subscribed Successfully")
 
     def on_connect(self, client, userdata, flags, rc):
         if rc == 0:
