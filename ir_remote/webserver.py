@@ -23,7 +23,7 @@ class flaskWrapper:
         self.app = Flask(__name__, template_folder=self.templatePath)
         self.app.route("/", methods=["GET", "POST"])(self.main)
         self.app.route("/settings.html", methods=["GET", "POST"])(self.settings)
-        self.remoteLog.info("Webserver Loaded Successfully")
+        self.remoteLog.info("Webserver Loaded uccessfully")
         self.remote = remote  
 
            
