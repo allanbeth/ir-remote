@@ -52,7 +52,7 @@ class flaskWrapper:
                     else:
                         self.remote.activeConfig['btns'][btn]['pulse'] = "short" 
                     self.remote.activeConfig['btns'][btn]['key'] = data         
-                self.remote.updateConfig(self.remote.activeConfig)                 
+                self.remote.updateConfig(self.remote.active, self.remote.activeConfig)                 
             else:
                 self.remote.active = r
                 self.remote.switchDevice(self.remote.active)                       

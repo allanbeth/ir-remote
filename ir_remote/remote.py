@@ -24,9 +24,9 @@ class activeRemote:
     def keyPress(self, key):
         return key  
 
-    def updateConfig(self, data):
+    def updateConfig(self, device, data):
         self.remoteLog.info("-------Updating Config-------")
-        return data
+        return device, data
     
     def switchDevice(self, name):
         self.remoteLog.info("-------Switching active remote-------")
@@ -84,7 +84,7 @@ class remote:
             self.active = self.deviceList[0]
             self.remoteLog.info("Set Remote: %s" % self.active)
         
-        self.load()
+        self.load(self.active)
 
 
     def list(self):
@@ -103,7 +103,7 @@ class remote:
         return(deviceList)
         
 
-    def load(self):
+    def load(self, active):
         #load devices
         for device in self.deviceList:
             file = "config/%s.json" % device
@@ -113,6 +113,8 @@ class remote:
             else:
                 self.add(device)
 
+        self.active = active
+        
         self.activeConfigFile = "config/%s.json" % self.active
         self.activeConfigPath = self.root / self.activeConfigFile       
         if self.activeConfigPath.is_file():
@@ -128,7 +130,8 @@ class remote:
         self.activeConfig['name'] = self.active 
         self.activeConfig['make'] = self.active.split('_', 1)[0]
         self.activeConfig['model'] = self.active.split('_', 1)[-1]  
-
+        keys = self.getKeys(self.active)
+        self.activeConfig['option'] = keys
         #assign buttons
         for btn in self.activeConfig['btns'] :
             data = config['btns'][btn]['key']

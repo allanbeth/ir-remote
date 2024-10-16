@@ -61,10 +61,10 @@ class launchremote:
         self.remoteLog.info("Button Pressed: %s" % key)
         self.remote.send(self.remote.activeRemote.active, key)
 
-    def webserverUpdate(self, data):
+    def webserverUpdate(self, device, data):
         self.remoteLog.info("-------Saving config-------")
-        self.remoteLog.info("Remote: "+self.remote.activeRemote.name+"")
-        self.remote.update(data)
+        self.remoteLog.info("Remote: "+self.remote.activeRemote.active+"")
+        self.remote.update(device, data)
         self.remoteLog.info("Saved Successfully")
 
     def webserverSwitch(self, name):
