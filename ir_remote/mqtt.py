@@ -48,7 +48,7 @@ class remoteMqtt:
         #Power button
         discoveryMsg = {"name": "Power",
             "command_topic":"IR-Remote/"+remote+"/pwr/set",
-            "payload_press":"Power",
+            "payload_press":""+remote+":Power",
             "unique_id":""+remote+"",
             "device": {
                 "name": remote,
@@ -64,7 +64,7 @@ class remoteMqtt:
         #CH + button
         discoveryMsg = {"name": "Ch +",
             "command_topic":"IR-Remote/"+remote+"/chup/set",
-            "payload_press":"Ch +",
+            "payload_press":""+remote+":Ch +",
             "unique_id":"ChUp"+remote+"",
             "device": {
                 
@@ -78,7 +78,7 @@ class remoteMqtt:
         #Ch - button
         discoveryMsg = {"name": "Ch -",
             "command_topic":"IR-Remote/"+remote+"/chdwn/set",
-            "payload_press":"Ch -",
+            "payload_press":""+remote+":Ch -",
             "unique_id":"chdwn_"+remote+"",
             "device": {
                 
@@ -92,7 +92,7 @@ class remoteMqtt:
         #Vol + button
         discoveryMsg = {"name": "Vol +",
             "command_topic":"IR-Remote/"+remote+"/volup/set",
-            "payload_press":"Vol +",
+            "payload_press":""+remote+":Vol +",
             "unique_id":"volup_"+remote+"",
             "device": {
                 
@@ -106,7 +106,7 @@ class remoteMqtt:
         #Vol - button
         discoveryMsg = {"name": "Vol -",
             "command_topic":"IR-Remote/"+remote+"/voldwn/set",
-            "payload_press":"Vol -",
+            "payload_press":""+remote+":Vol -",
             "unique_id":"voldwn_"+remote+"",
             "device": {
                 
@@ -120,7 +120,7 @@ class remoteMqtt:
         #mute button
         discoveryMsg = {"name": "Mute",
             "command_topic":"IR-Remote/"+remote+"/mute/set",
-            "payload_press":""+remote+" Mute",
+            "payload_press":""+remote+":Mute",
             "unique_id":"mute_"+remote+"",
             "device": {
                 
@@ -134,7 +134,7 @@ class remoteMqtt:
         #Info button
         discoveryMsg = {"name": "Info",
             "command_topic":"IR-Remote/"+remote+"/info/set",
-            "payload_press":""+remote+" Info",
+            "payload_press":""+remote+":Info",
             "unique_id":"info_"+remote+"",
             "device": {
                 "name": remote,
