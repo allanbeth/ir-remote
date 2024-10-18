@@ -1,0 +1,19 @@
+{
+  "name": "Living Room TV",
+  "unique_id": "livingroom_tv",
+  "command_topic": "homeassistant/media_player/livingroom_tv/set",
+  "state_topic": "homeassistant/media_player/livingroom_tv/state",
+  "availability_topic": "homeassistant/media_player/livingroom_tv/availability",
+  "payload_available": "online",
+  "payload_not_available": "offline",
+  "supported_features": 20413,
+  "payload_on": "ON",
+  "payload_off": "OFF",
+  "icon": "mdi:television",
+  "device": {
+    "identifiers": ["livingroom_tv"],
+    "manufacturer": "Example Manufacturer",
+    "model": "Model XYZ",
+    "name": "Living Room TV"
+  }
+}
