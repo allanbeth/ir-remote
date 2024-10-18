@@ -17,3 +17,19 @@
     "name": "Living Room TV"
   }
 }
+
+{
+  "name": "Living Room Remote",
+  "unique_id": "livingroom_remote",
+  "command_topic": "homeassistant/remote/livingroom_remote/set",
+  "state_topic": "homeassistant/remote/livingroom_remote/state",
+  "availability_topic": "homeassistant/remote/livingroom_remote/availability",
+  "payload_available": "online",
+  "payload_not_available": "offline",
+  "device": {
+    "identifiers": ["livingroom_remote"],
+    "manufacturer": "Example Manufacturer",
+    "model": "Model ABC",
+    "name": "Living Room Remote"
+  }
+}
