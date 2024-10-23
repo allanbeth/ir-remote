@@ -18,9 +18,14 @@ cd ir-remote
 I use uv for package management.
 See [installation instructions here](https://docs.astral.sh/uv/getting-started/installation/).
 
-### Configure irsend
+### Install and configure LIRC package
+
+https://lirc.readthedocs.io/en/latest/
 
 TODO: Add instructions here
+
+
+
 
 ### Run using uv
 
