@@ -16,9 +16,7 @@ except Exception as ex:
 class flaskWrapper:
     def __init__(self, remote):
         self.remoteLog = remoteLog()
-
         self.remote = remote  
-
            
     def main(self):         
         key = ""
