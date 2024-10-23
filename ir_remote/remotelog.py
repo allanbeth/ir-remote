@@ -37,3 +37,22 @@ class remoteLog:
 
     def critical(self, msg):
         self.logger.critical(msg)
+
+    def resetLog(self):
+        with open(logPath, "w") as data:
+            pass
+
+        self.info("Log File Reset Successfully")
+
+    def getLog(self):
+        fileContent = []
+        with open(logPath, "r") as data:
+            for line in data:
+                #logData['data'] = line
+                fileContent.append(line)    
+        logData = {}
+        fileContent = fileContent[-100:]
+        fileContent.reverse()
+        logData['data'] = fileContent
+        return logData
+

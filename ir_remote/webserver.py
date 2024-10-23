@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import sys, os
+import sys, json, os, fileinput
 
 
 try:
@@ -16,14 +16,7 @@ except Exception as ex:
 class flaskWrapper:
     def __init__(self, remote):
         self.remoteLog = remoteLog()
-        self.remoteLog.info("-------Loading Webserver-------")
-        self.root = Path(__file__).parents[1]
-        #template_dir = os.path.join(template_dir, 'templates')
-        self.templatePath = self.root / "templates"
-        self.app = Flask(__name__, template_folder=self.templatePath)
-        self.app.route("/", methods=["GET", "POST"])(self.main)
-        self.app.route("/settings.html", methods=["GET", "POST"])(self.settings)
-        self.remoteLog.info("Webserver Loaded uccessfully")
+
         self.remote = remote  
 
            
@@ -60,8 +53,29 @@ class flaskWrapper:
         
         if request.method == "GET":       
             return render_template('settings.html', **self.remote.activeConfig)
+        
+
+    def log(self):
+
+
+        if request.method == "POST":
+            self.remoteLog.resetLog()    
+            logData = self.remoteLog.getLog()
+            return render_template('log.html', **logData)
+          
+        if request.method == "GET":
+            logData = self.remoteLog.getLog()
+            return render_template('log.html', **logData)
 
 
     def run(self):
+        self.remoteLog.info("-------Loading Webserver-------")
+        self.root = Path(__file__).parents[1]
+        self.templatePath = self.root / "templates"
+        self.app = Flask(__name__, template_folder=self.templatePath)
+        self.app.route("/", methods=["GET", "POST"])(self.main)
+        self.app.route("/settings.html", methods=["GET", "POST"])(self.settings)
+        self.app.route("/log.html", methods=["GET", "POST"])(self.log)
+        self.remoteLog.info("Webserver Loaded Successfully")
         self.app.run(host='0.0.0.0', port=8081, debug=True)
 

@@ -37,6 +37,8 @@ class remoteMqtt:
         for device in deviceList:
             self.haDiscovery(device)
 
+        #self.remoteHass()
+
     def haDiscovery(self, remote):
 
         self.remoteLog.info("-------Start MQTT Discovery-------")
@@ -50,11 +52,12 @@ class remoteMqtt:
             "command_topic":"IR-Remote/"+remote+"/pwr/set",
             "payload_press":""+remote+":Power",
             "unique_id":""+remote+"",
+            "icon": "mdi:power",
             "device": {
                 "name": remote,
                 "model": ""+model+"",
                 "manufacturer": ""+make+"",
-                "identifiers": remote
+                "identifiers": remote,
                 }
             } 
         
@@ -66,6 +69,7 @@ class remoteMqtt:
             "command_topic":"IR-Remote/"+remote+"/chup/set",
             "payload_press":""+remote+":Ch +",
             "unique_id":"ChUp"+remote+"",
+            "icon": "mdi:plus",
             "device": {
                 
                 "identifiers": remote
@@ -80,6 +84,7 @@ class remoteMqtt:
             "command_topic":"IR-Remote/"+remote+"/chdwn/set",
             "payload_press":""+remote+":Ch -",
             "unique_id":"chdwn_"+remote+"",
+            "icon": "mdi:minus",
             "device": {
                 
                 "identifiers": remote
@@ -94,6 +99,7 @@ class remoteMqtt:
             "command_topic":"IR-Remote/"+remote+"/volup/set",
             "payload_press":""+remote+":Vol +",
             "unique_id":"volup_"+remote+"",
+            "icon": "mdi:volume-plus",
             "device": {
                 
                 "identifiers": remote
@@ -108,6 +114,7 @@ class remoteMqtt:
             "command_topic":"IR-Remote/"+remote+"/voldwn/set",
             "payload_press":""+remote+":Vol -",
             "unique_id":"voldwn_"+remote+"",
+            "icon": "mdi:volume-minus",
             "device": {
                 
                 "identifiers": remote
@@ -122,6 +129,7 @@ class remoteMqtt:
             "command_topic":"IR-Remote/"+remote+"/mute/set",
             "payload_press":""+remote+":Mute",
             "unique_id":"mute_"+remote+"",
+            "icon": "mdi:volume-mute",
             "device": {
                 
                 "identifiers": remote
@@ -136,6 +144,7 @@ class remoteMqtt:
             "command_topic":"IR-Remote/"+remote+"/info/set",
             "payload_press":""+remote+":Info",
             "unique_id":"info_"+remote+"",
+            "icon": "mdi:information-variant",
             "device": {
                 "name": remote,
                 "identifiers": remote
@@ -144,6 +153,34 @@ class remoteMqtt:
         
         self.publish("homeassistant/button/"+remote+"_info/config", json.dumps(discoveryMsg))
         self.subscribe("IR-Remote/"+remote+"/info/set")
+
+
+    def remoteHass(self):
+        self.remoteLog.info("-------Start MQTT Discovery-------")
+        self.remoteLog.info("Remote: Test IR Remote")
+        remoteDiscovery = {
+            "name": "Test TV",
+            "unique_id": "test_tv",
+            "command_topic": "IR-Remote/test_tv/set",
+            "state_topic": "IR-Remote/test_tv/state",
+            "availability_topic": "IR-Remote/test_tv/availability",
+            "payload_available": "online",
+            "payload_not_available": "offline",
+            "supported_features": 20413,
+            "payload_on": "ON",
+            "payload_off": "OFF",
+            "icon": "mdi:television",
+            "device": {
+                "identifiers": ["test_tv"],
+                "manufacturer": "Example Manufacturer",
+                "model": "Model XYZ",
+                "name": "Test TV"
+                }
+            }
+        self.publish("homeassistant/media_player/test_tv/config", json.dumps(remoteDiscovery))
+        self.subscribe("IR-Remote/test_tv/set")
+
+
         
     def publish(self, topic, msg):           
             config = json.loads(msg) 

@@ -36,6 +36,7 @@ class launchremote:
         self.mqtt = remoteMqtt()
         deviceList = self.remote.deviceList
         self.mqtt.run(deviceList)
+        self.mqtt.remoteHass()
         self.mqtt.client.on_message = self.mqttMessage 
 
     def loadRemote(self):

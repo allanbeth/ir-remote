@@ -74,6 +74,10 @@
       height: 50px;
     }
 
+    .btns {
+      text-align: center;  
+    }
+
     .key {
       text-align: center;
       font-size: 26px;
@@ -119,6 +123,11 @@
         <tr class="headings">
           <td colspan="3">Remote Configuration</td>
         </tr>
+        <tr class="btns">
+          <td style="text-align: right;padding-bottom: 25px;"><a href="/" class="btn btn-lg btn-default width=auto">Cancel</a></td>
+          <td style="padding-bottom: 25px;"><a href="/log.html" class="btn btn-lg btn-default width=auto">Log</a></td>
+          <td style="text-align: left; padding-bottom: 25px;"><input class="btn btn-lg btn-default width=auto" type="submit" value="Save"></td>
+      </tr>
         <tr class="headings">
           <td>Device:</td>
           <td>
@@ -166,6 +175,7 @@
         </tr>
         {% endfor %}
       </table>
+      <a href="/log.html" class="btn btn-lg btn-default width=auto">Log</a>
       <a href="/" class="btn btn-lg btn-default width=auto">Cancel</a>
       <input class="btn btn-lg btn-default width=auto" type="submit" value="Save">
     </form>
