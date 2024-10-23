@@ -21,7 +21,7 @@
     div.container {
       position: relative;
       text-align: left;
-      width: 500px;
+      width: 290px;
       background-color: darkgray;
       padding-top: 50px;
       padding-bottom: 90px;
@@ -53,40 +53,43 @@
     }
 
     .headings {
-      font-size: 26px;
+      font-size: 18px;
       text-align: center;
 
     }
 
     .logs {
       text-align: left;
-      font-size: 16px;
+      font-size: 12px;
       border-style: solid;
 
     }
 
     .btns {
       text-align: center;
-      font-size: 26px;
+      font-size: 12px;
     }
 
     a {
-      font-size: 26px;
+      font-size: 12px;
     }
 
     .btn {
-      font-size: 26px;
+      font-size: 12px;
     }
 
 
 
     #table-scroll {
-      height: 1500px;
+      height: 1000px;
       overflow: auto;
       margin-top: 20px;
     }
 
 
+    i {
+      font-size: 2rem;
+    }
   </style>
 
 
@@ -104,11 +107,11 @@
         </tr>
         <tr class="btns">
           <td style="text-align: right; padding-bottom: 25px;"><a href="/settings.html"
-              class="btn btn-lg btn-default width=auto">Cancel</a></td>
-          <td style="padding-bottom: 25px;"><input class="btn btn-lg btn-default width=auto" type="submit" name="btn"
-              value="Reset"></td>
+              class="btn btn-default "><i class="bi bi-arrow-left"></i></a></td>
+          <td style="padding-bottom: 25px;"><button class="btn btn-default " type="submit" name="btn"
+              value="Reset"><i class="bi bi-trash"></i></button></td>
           <td style="text-align: left; padding-bottom: 25px;"><a href="/log.html"
-              class="btn btn-lg btn-default width=auto">Refresh</a></td>
+              class="btn btn-default "><i class="bi bi-arrow-clockwise"></i></a></td>
         </tr>
       </table>
 

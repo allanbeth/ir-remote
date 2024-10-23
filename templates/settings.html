@@ -21,7 +21,7 @@
     div.container {
       position: relative;
       text-align: center;
-      width: 500px;
+      width: 290px;
       background-color: darkgray;
       padding-top: 50px;
       padding-bottom: 90px;
@@ -45,17 +45,16 @@
 
     td {
       padding: 5px;
-
+      font-size: 16px;
     }
 
     select {
-      width: 160px;
-      height: 50px;
-      font-size: 18px;
+      width: 100%;
+      font-size: 14px;
     }
 
     button {
-      font-size: 48px;
+      font-size: 16px;
     }
 
     h1.centered {
@@ -63,24 +62,23 @@
       text-align: center;
     }
 
-    i {
-      font-size: 5rem;
-    }
+ 
 
     .btn {
       text-align: center;
-      font-size: 26px;
-      width: 130px;
-      height: 50px;
+      font-size: 16px;
+      width:100%;
+
     }
 
     .btns {
       text-align: center;  
+      font-size: 14px;
     }
 
     .key {
       text-align: center;
-      font-size: 26px;
+      font-size: 18px;
     }
 
     .time {
@@ -88,27 +86,35 @@
     }
 
     .pulseLength {
-      font-size: 26px;
+      font-size: 14;
     }
 
     .headings {
-      font-size: 26px;
+      font-size: 20px;
     }
 
     .txtbox {
-      width: 65px;
+      width: 25px;
       text-align: center;
     }
 
-    .form-select {
-      width: 160px;
-    }
 
     .form-check-input {
-      width: 50px;
-      height: 50px;
+
+      font-size: 14px;
 
     }
+    i {
+      font-size: 2rem;
+    }
+
+    #table-scroll {
+      height:900px;
+      overflow:auto;  
+      margin-top:20px;
+    }
+
+
   </style>
 
 
@@ -124,34 +130,44 @@
           <td colspan="3">Remote Configuration</td>
         </tr>
         <tr class="btns">
-          <td style="text-align: right;padding-bottom: 25px;"><a href="/" class="btn btn-lg btn-default width=auto">Cancel</a></td>
-          <td style="padding-bottom: 25px;"><a href="/log.html" class="btn btn-lg btn-default width=auto">Log</a></td>
-          <td style="text-align: left; padding-bottom: 25px;"><input class="btn btn-lg btn-default width=auto" type="submit" value="Save"></td>
+          <td style="padding-bottom: 25px;"><a href="/" class="btn btn-default"><i class="bi bi-arrow-left"></a></td>
+          <td style="padding-bottom: 25px;"><a href="/log.html" class="btn btn-default"><i class="bi bi-book"></a></td>
+          <td style="padding-bottom: 25px;"><button class="btn btn-default" type="submit" value="Save"><i class="bi bi-floppy"></i></button></td>
       </tr>
+    </table>
+    <table>
         <tr class="headings">
           <td>Device:</td>
           <td>
-            <select class="form-select form-select-sm" style="width: 160px;" aria-label=".form-select-sm example"
+            <select class="form-select form-select-sm" style="width: 100%;" aria-label=".form-select-sm example"
               name="devices">
-              <option value="{{name}}" selected>{{name}}</option>
+              <option style="font-size: 14;" value="{{name}}" selected>{{name}}</option>
               {% for item in devices %}
               {% if name != item %}
-              <option value="{{item}}">{{item}}</option>
+              <option style="font-size: 14;" value="{{item}}">{{item}}</option>
               {% endif %}
               {% endfor %}
             </select>
           </td>
-          <td><input class="btn btn-lg btn-default width=auto" type="submit" value="Load"></td>
+          <td><button class="btn btn-default" type="submit" value="Load"><i class="bi bi-download"></i></button></td>
         </tr>
+        </table>
+        <table>
         <tr class="pulseLength">
           <td colspan="2">Hold Length (secs)</td>
           <td><input class="txtbox" type="text" id="" name="pulseLength" value="{{pulseLength}}"></td>
         </tr>
+        </table>
+        <div id="table-scroll">
+        <table>
+          <thead>
         <tr class="headings">
           <td>Button</td>
           <td>Key</td>
           <td>Hold</td>
         </tr>
+      </thead>
+      <tbody>
         {% for btn in btns %}
         <tr>
           <td class="btn">{{btn}}</td>
@@ -174,10 +190,9 @@
           </td>
         </tr>
         {% endfor %}
+      </tbody>
       </table>
-      <a href="/log.html" class="btn btn-lg btn-default width=auto">Log</a>
-      <a href="/" class="btn btn-lg btn-default width=auto">Cancel</a>
-      <input class="btn btn-lg btn-default width=auto" type="submit" value="Save">
+        </div>
     </form>
   </div>
 
