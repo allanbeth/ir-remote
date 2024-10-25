@@ -11,24 +11,21 @@ except Exception as ex:
     print("Error" + str(ex))
     sys.exit()
 
-              
-class launchremote:           
 
+class launchremote:
     def __init__(self):
-
-        #load remoteLog
+        # load remoteLog
         self.loadremoteLog()
-        
-        #load remote
+
+        # load remote
         self.loadRemote()
 
-        #load mqtt
+        # load mqtt
         self.loadMqtt()
-            
-        #launch webserver
+
+        # launch webserver
         self.loadWebserver()
-        
-        
+
     def loadremoteLog(self):
         self.remoteLog = remoteLog()
 
@@ -37,24 +34,24 @@ class launchremote:
         deviceList = self.remote.deviceList
         self.mqtt.run(deviceList)
         self.mqtt.remoteHass()
-        self.mqtt.client.on_message = self.mqttMessage 
+        self.mqtt.client.on_message = self.mqttMessage
 
     def loadRemote(self):
         self.remote = remote()
         self.remote.activeRemote.keyPress = self.webserverkeypress
         self.remote.activeRemote.updateConfig = self.webserverUpdate
         self.remote.activeRemote.switchDevice = self.webserverSwitch
-            
-    def loadWebserver(self):     
+
+    def loadWebserver(self):
         self.mywebserver = flaskWrapper(self.remote.activeRemote)
         self.mywebserver.run()
 
     def mqttMessage(self, client, userdata, msg):
         data = msg.payload.decode()
-        device = data.split(':', 1)[0]
-        key = data.split(':', 1)[-1] 
+        device = data.split(":", 1)[0]
+        key = data.split(":", 1)[-1]
         self.remoteLog.info("-------MQTT Button-------")
-        self.remoteLog.info("Button Pressed: "+key+"")
+        self.remoteLog.info("Button Pressed: " + key + "")
         self.remote.send(device, key)
 
     def webserverkeypress(self, key):
@@ -64,31 +61,21 @@ class launchremote:
 
     def webserverUpdate(self, device, data):
         self.remoteLog.info("-------Saving config-------")
-        self.remoteLog.info("Remote: "+self.remote.activeRemote.active+"")
+        self.remoteLog.info("Remote: " + self.remote.activeRemote.active + "")
         self.remote.update(device, data)
         self.remoteLog.info("Saved Successfully")
 
     def webserverSwitch(self, name):
         self.remoteLog.info("-------Switching Device-------")
-        self.remoteLog.info("New Device: "+name+"")
+        self.remoteLog.info("New Device: " + name + "")
         self.remote.load(name)
         self.remoteLog.info("Switched Successfully")
+
 
 def run():
     remote = launchremote()
 
+
 if __name__ == "__main__":
-        
-    #Start IR Remote
+    # Start IR Remote
     run()
-        
-
-            
-            
-
-
-        
-
-        
-    
-    
