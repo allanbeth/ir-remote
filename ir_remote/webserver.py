@@ -58,12 +58,23 @@ class flaskWrapper:
 
         if request.method == "POST":
             self.remoteLog.resetLog()    
-            logData = self.remoteLog.getLog()
+            logData = self.remoteLog.getLog(1)
             return render_template('log.html', **logData)
           
         if request.method == "GET":
-            logData = self.remoteLog.getLog()
+            logData = self.remoteLog.getLog(1)
             return render_template('log.html', **logData)
+        
+    def fullLog(self):
+
+
+        if request.method == "POST":    
+            logData = self.remoteLog.getLog(2)
+            return render_template('full-log.html', **logData)
+          
+        if request.method == "GET":
+            logData = self.remoteLog.getLog(1)
+            return render_template('full-log.html', **logData)
 
 
     def run(self):
@@ -74,6 +85,7 @@ class flaskWrapper:
         self.app.route("/", methods=["GET", "POST"])(self.main)
         self.app.route("/settings.html", methods=["GET", "POST"])(self.settings)
         self.app.route("/log.html", methods=["GET", "POST"])(self.log)
+        self.app.route("/full-log.html", methods=["GET", "POST"])(self.fullLog)
         self.remoteLog.info("Webserver Loaded Successfully")
         self.app.run(host='0.0.0.0', port=8081, debug=True)
 

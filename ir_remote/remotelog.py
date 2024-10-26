@@ -44,14 +44,16 @@ class remoteLog:
 
         self.info("Log File Reset Successfully")
 
-    def getLog(self):
+    def getLog(self, x):
+        self.info("Log:"+str(x)+"")
         fileContent = []
         with open(logPath, "r") as data:
             for line in data:
-                #logData['data'] = line
-                fileContent.append(line)    
-        logData = {}
-        fileContent = fileContent[-100:]
+                fileContent.append(line)  
+
+        if x == 1:
+            fileContent = fileContent[-100:]
+        logData = {} 
         fileContent.reverse()
         logData['data'] = fileContent
         return logData
