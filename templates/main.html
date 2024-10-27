@@ -3,7 +3,8 @@
 <head>
 
   <title>IR Remote</title>
-  <link rel="icon" type="image/icon" href="images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="shortcut icon" href="/images/favicon.ico">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
     integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -31,22 +32,20 @@
 
     table {
       table-layout: fixed;
-      top:0px;
-      bottom:0px;
-      left:0px;
-      right:0px;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
       align-self: center;
       width: 100%;
       height: 100%;
       margin-bottom: 10px;
     }
 
-
     td {
       padding: 5px;
 
     }
-
 
     .deviceText {
       font-size: 28px;
@@ -59,7 +58,7 @@
     }
 
     button#text {
-      font-size: 22px;
+      font-size: 24px;
     }
 
     h1.centered {
@@ -67,8 +66,32 @@
       text-align: center;
     }
 
+    .btn {
+      border-radius: 12px;
+      padding: 10px;
+    }
+
     i {
       font-size: 50px;
+    }
+
+    #btnOk {
+      height: 80px;
+      width: 80px;
+      border-radius: 28px;
+      font-size: 32px;
+    }
+
+    #colours {
+      width: 60px;
+      height: 40px;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+
+    .colours td {
+      padding-top: 20px;
+      padding-bottom: 20px;
     }
   </style>
 
@@ -157,7 +180,7 @@
           <td><button class="btn btn-default" type="submit" name="button" id="function" value="Left"><i
                 class="bi bi-arrow-left-circle"></i></button>
           </td>
-          <td><button class="btn btn-default" type="submit" name="button" id="text" value="OK">OK</button>
+          <td><button class="btn btn-default" type="submit" name="button" id="btnOk" value="OK">OK</button>
           </td>
           <td><button class="btn btn-default" type="submit" name="button" id="function" value="Right"><i
                 class="bi bi-arrow-right-circle"></i></button>
@@ -201,12 +224,12 @@
 
       <table class="colours">
         <tr>
-          <td><button class="btn btn-danger btn-lg" type="submit" name="button" id="function" value="Red"></button></td>
-          <td><button class="btn btn-success btn-lg" type="submit" name="button" id="function" value="Green"></button>
+          <td><button class="btn btn-danger btn-lg" type="submit" name="button" id="colours" value="Red"></button></td>
+          <td><button class="btn btn-success btn-lg" type="submit" name="button" id="colours" value="Green"></button>
           </td>
-          <td><button class="btn btn-warning btn-lg" type="submit" name="button" id="function" value="Yellow"></button>
+          <td><button class="btn btn-warning btn-lg" type="submit" name="button" id="colours" value="Yellow"></button>
           </td>
-          <td><button class="btn btn-primary btn-lg" type="submit" name="button" id="function" value="Blue"></button>
+          <td><button class="btn btn-primary btn-lg" type="submit" name="button" id="colours" value="Blue"></button>
           </td>
         </tr>
       </table>
@@ -237,7 +260,9 @@
                 class="bi bi-record"></i></button></td>
         </tr>
         <tr>
-          <td colspan="3">{{model}}</td>
+        </table>
+          <table>
+          <td>{{model}}</td>
         </tr>
       </table>
 
