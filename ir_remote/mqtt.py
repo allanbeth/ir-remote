@@ -159,24 +159,32 @@ class remoteMqtt:
         self.remoteLog.info("-------Start MQTT Discovery-------")
         self.remoteLog.info("Remote: Test IR Remote")
         remoteDiscovery = {
-            "name": "Test TV",
-            "unique_id": "test_tv",
-            "command_topic": "IR-Remote/test_tv/set",
-            "state_topic": "IR-Remote/test_tv/state",
-            "availability_topic": "IR-Remote/test_tv/availability",
+            "name": "Living Room Remote",
+            "unique_id": "livingroom_remote",
+            "command_topic": "homeassistant/remote/livingroom_remote/set",
+            "availability_topic": "homeassistant/remote/livingroom_remote/availability",
             "payload_available": "online",
             "payload_not_available": "offline",
-            "supported_features": 20413,
-            "payload_on": "ON",
-            "payload_off": "OFF",
-            "icon": "mdi:television",
             "device": {
-                "identifiers": ["test_tv"],
+                "identifiers": ["livingroom_remote"],
                 "manufacturer": "Example Manufacturer",
-                "model": "Model XYZ",
-                "name": "Test TV"
+                "model": "Model ABC",
+                "name": "Living Room Remote"
+            },
+            "commands": {
+                "power": {
+                "command_topic": "homeassistant/remote/livingroom_remote/power",
+                "payload_on": "ON",
+                "payload_off": "OFF"
+                },
+                "mute": {
+                "command_topic": "homeassistant/remote/livingroom_remote/mute",
+                "payload_on": "MUTE_ON",
+                "payload_off": "MUTE_OFF"
                 }
             }
+        }
+
         self.publish("homeassistant/media_player/test_tv/config", json.dumps(remoteDiscovery))
         self.subscribe("IR-Remote/test_tv/set")
 

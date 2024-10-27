@@ -45,7 +45,6 @@ class remoteLog:
         self.info("Log File Reset Successfully")
 
     def getLog(self, x):
-        self.info("Log:"+str(x)+"")
         fileContent = []
         with open(logPath, "r") as data:
             for line in data:
